@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import SimpeFileCRYP
+
 print(ord("x").__str__() + chr(120).__str__())
 
 def to_number(buchstabe):
@@ -51,5 +53,12 @@ if bcrypt.checkpw(b"my_secret_password", stored_hashed_password):
     print("Password is correct!")
 else:
     print("Password is incorrect or hash mismatch!")
+k = SimpeFileCRYP.genkey("negoisalla")
+print(k)
+print("b'2XvRxRiLL5QNPiegdBEDhpo41JddQktdhLhIJIdE--c='")
+SimpeFileCRYP.encrypt(k, "nichtsehndudarf.jpg")
+
+
+
 
 
