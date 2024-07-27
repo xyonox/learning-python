@@ -5,6 +5,10 @@ root = Tk()
 root.title("My First Gui")
 root.geometry("500x500")
 
+def on_closing():
+    print("byeeeeeee")
+    root.destroy()
+
 def submit():
     lab.config(text=en.get())
     en.delete(0, 'end')
@@ -12,7 +16,7 @@ def submit2():
     lab2.config(text=tt.get("1.0", 'end-1c'))
     tt.delete("1.0", 'end')
 
-
+root.protocol("WM_DELETE_WINDOW", on_closing)
 
 lab = Label(root, text='hey')
 lab.pack()
