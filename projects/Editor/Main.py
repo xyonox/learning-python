@@ -37,7 +37,7 @@ def on_key_event(event):
 
 if __name__ == "__main__":
     root.protocol("WM_DELETE_WINDOW", on_closing)
-    root.geometry("400x300")
+    root.geometry("500x400")
 
     root.bind('<KeyPress>', on_key_event)
 
