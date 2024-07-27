@@ -16,3 +16,13 @@ noten["johanna"] = "+1"
 
 print(noten)
 print(noten["johanna"])
+
+## Python for schleifen -/ Java fori und for each schleife
+
+#for i
+for number in range(10):
+    print(number)
+
+#for each
+for w in noten:
+    print(w)
