@@ -1,61 +1,44 @@
 import os
 import shutil
+from pathlib import Path
 
-# ik is kein desktop hahaha
 docpath = "C:\\Users\\carlf\\Documents\\"
+
+
+#function
 def clean(path):
     list_dir = os.listdir(path)
     print(list_dir)
 
-    ## ornder
-    audio = path + "audios"
+    ## create if not exists
+    audio = os.path.join(path, "audios")
+    video = os.path.join(path, "videos")
+    notes = os.path.join(path, "notes")
+    pics = os.path.join(path, "pics")
+    other = os.path.join(path, "other")
 
-    # sicherstellen das die ordner exestieren
-    if not os.path.exists(audio):
-        os.makedirs(audio)
+    for directory in [audio, video, notes, pics, other]:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
 
-    video = path + "videos"
-
-    if not os.path.exists(video):
-        os.makedirs(video)
-
-    notes = path + "notes"
-
-    if not os.path.exists(notes):
-        os.makedirs(notes)
-
-    pics = path + "pics"
-
-    if not os.path.exists(pics):
-        os.makedirs(pics)
-
-    # bewegen der datein
+    # move files
     for x in list_dir:
-        if (x.endswith(".mp3") | x.endswith(".wav") | x.endswith(".wav") | x.endswith(".m4a")
-                | x.endswith(".aac") | x.endswith(".ogg") | x.endswith(".aiff") | x.endswith(".aif")
-                | x.endswith(".wma")):
-            src_path = os.path.join(path, x)
+        src_path = os.path.join(path, x)
 
-            # Vollständiger Pfad zur Zieldatei
-            dest_path = os.path.join(audio, x)
+        if not os.path.isfile(src_path):
+            continue  # skip dir
 
-            # Verschieben der Datei
+        if x.endswith((".mp3", ".wav", ".m4a", ".aac", ".ogg", ".aiff", ".aif", ".wma")):
             shutil.move(src_path, audio)
-        if (x.endswith(".mp4") | x.endswith(".avi") | x.endswith(".mov") | x.endswith(".webm")):
-            src_path = os.path.join(path, x)
-            dest_path = os.path.join(audio, x)
+        elif x.endswith((".mp4", ".avi", ".mov", ".webm")):
             shutil.move(src_path, video)
-        if (x.endswith(".txt") | x.endswith(".java") | x.endswith(".python") | x.endswith(".pdf")):
-            src_path = os.path.join(path, x)
-            dest_path = os.path.join(audio, x)
+        elif x.endswith((".txt", ".java", ".py", ".pdf")):
             shutil.move(src_path, notes)
-        if (x.endswith(".jpg") | x.endswith(".jpng") | x.endswith(".png") | x.endswith(".webp")):
-            src_path = os.path.join(path, x)
-            dest_path = os.path.join(audio, x)
+        elif x.endswith((".jpg", ".jpeg", ".png", ".webp")):
             shutil.move(src_path, pics)
-    #    if (x.endswith(".mp3") | x.endswith(".wav")) :
-    #        src_path = os.path.join(path, x)
-    #        dest_path = os.path.join(audio, x)
-    #        shutil.move(src_path, audio)
+        else:
+            shutil.move(src_path, other)
 
-clean(docpath)
+
+if __name__ == "__main__":
+    clean(docpath)
