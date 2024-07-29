@@ -41,4 +41,21 @@ def clean(path):
 
 
 if __name__ == "__main__":
-    clean(docpath)
+    user_folder = os.path.expanduser("~")
+    documents_folder = os.path.join(user_folder, "Documents")
+    desktop_folder = os.path.join(user_folder, "Desktop")
+    while True:
+        print("documents(1), Desktop(2) or own folder(3)")
+        i1 = input()
+        if i1 == "1":
+            clean(documents_folder)
+        elif i1 == "2":
+            clean(documents_folder)
+        elif i1 == "3":
+            d = input("Path: ")
+            if not os.path.exists(d) or not os.path.isdir(d):
+                print("not found or is no folder")
+            else:
+                clean(d)
+        else:
+            print("brooo 1,2 or 3!")
