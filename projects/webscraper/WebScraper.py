@@ -5,13 +5,20 @@ import pandas as pd
 
 ## simple search
 rq = requests.get("https://oxylabs.io/")
-soup = BeautifulSoup(rq.text, 'html.parser')
+soup_rq = BeautifulSoup(rq.text, 'html.parser')
 
 
-blog_titles = soup.find_all('section', class_='enwhltf0')
+blog_titles = soup_rq.find_all('section', class_='enwhltf0')
 for title in blog_titles:
     print(title.text)
 
 ## Webbrowser/ webdriver
 driver = webdriver.Firefox()
+driver.get("https://sandbox.oxylabs.io/products")
+results = []
+content = driver.page_source
+soup = BeautifulSoup(content, "html.parser")
+
+
+
 
