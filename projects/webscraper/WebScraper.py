@@ -19,6 +19,10 @@ results = []
 content = driver.page_source
 soup = BeautifulSoup(content, "html.parser")
 
+for e in soup.findAll(attrs={"class": "product-card"}):
+    name = e.find("h4")
+    results.append(name.text)
 
+print(results)
 
 
