@@ -1,7 +1,9 @@
 from src import setup
-from src.user import user
+from src.user import User
 
 if __name__ == "__main__":
+
+    #testing == fun?
     setup.init()
-    user.create("xyonox2", "ichbinschlaui2")
-    print(user.exists("xyonox"))
+    User.create("xyonox2", "ichbinschlaui2")
+    print(User.exists("xyonox"))

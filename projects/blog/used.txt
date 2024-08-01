@@ -1,0 +1,4 @@
+-> {
+    https://github.com/einKampfLama/learning-python/tree/main/basics/database
+    https://github.com/einKampfLama/Password-Manager
+}

@@ -28,7 +28,6 @@ def exists(username):
 
 
 def create(username, password):
-
     query = "SELECT COUNT(*) FROM user WHERE name = ?"
 
     db = sqlite3.connect("/Users/carl/Documents/GitHub/learning-python/projects/blog/blog.db")
@@ -47,5 +46,27 @@ def create(username, password):
 
         cursor.execute(query, (username, pw))
         db.commit()
+    db.close()
+    return True
+
+def delete(username):
+    query = "SELECT COUNT(*) FROM user WHERE name = ?"
+
+    db = sqlite3.connect("/Users/carl/Documents/GitHub/learning-python/projects/blog/blog.db")
+    cursor = db.cursor()
+
+    cursor.execute(query, (username,))
+    count = cursor.fetchone()[0]
+
+    if count > 0:
+        query = "DELETE FROM user WHERE name = ?"
+        cursor.execute(query, (username,))
+        print("-- user is DONE! :}")
+        db.commit()
+
+    else:
+        print("-- user inst here :(")
+        db.close()
+        return False
     db.close()
     return True
