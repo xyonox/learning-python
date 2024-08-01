@@ -44,8 +44,27 @@ def delete(title):
 
         query = "DELETE FROM blog WHERE title = ?"
         cursor.execute(query, (title,))
-        print("-- user is DONE! :}")
+        print("-- blog is DONE! :}")
         db.commit()
 
         db.commit()
         db.close()
+
+def hasPerm(user, title):
+    if not exists(title):
+        print("-- blog isnt here :(")
+        return False
+
+    query = "SELECT user FROM blog WHERE title = ?"
+    db = sqlite3.connect("/Users/carl/Documents/GitHub/learning-python/projects/blog/blog.db")
+    cursor = db.cursor()
+
+    cursor.execute(query, (title,))
+    us = cursor.fetchone()[0]
+
+    if us == user:
+        print("-- yess :D")
+        return True
+    else:
+        print("-- nopppeeeee")
+        return False

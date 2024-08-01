@@ -12,3 +12,5 @@ if __name__ == "__main__":
     Blog.create("xyonox", "Python lernen", "ich lerne hier py\n"
                                            "du?\n"
                                            "nein? weg mit dir D:")
+    print(Blog.hasPerm("xyonox2", "Python lernen"))
+    Blog.delete("Python lernen")
