@@ -32,3 +32,20 @@ def create(user, title, content):
         cursor.execute(query, (user,title,content))
         db.commit()
         db.close()
+
+def delete(title):
+    if not exists(title):
+        print("-- noooo the blog isnt here")
+        return False
+    else:
+
+        db = sqlite3.connect("/Users/carl/Documents/GitHub/learning-python/projects/blog/blog.db")
+        cursor = db.cursor()
+
+        query = "DELETE FROM blog WHERE title = ?"
+        cursor.execute(query, (title,))
+        print("-- user is DONE! :}")
+        db.commit()
+
+        db.commit()
+        db.close()
