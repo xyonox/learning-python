@@ -70,3 +70,24 @@ def delete(username):
         return False
     db.close()
     return True
+
+
+
+def login(username, password):
+    if not exists(username):
+        print("-- user isnt here :(")
+        return False
+
+    query = "SELECT password FROM user WHERE name = ?"
+    db = sqlite3.connect("/Users/carl/Documents/GitHub/learning-python/projects/blog/blog.db")
+    cursor = db.cursor()
+
+    cursor.execute(query, (username,))
+    pw = cursor.fetchone()[0]
+
+    if pw == genkey(password):
+        print("-- You are in :D")
+        return True
+    else:
+        print("-- nopppeeeee wrong password")
+        return False
