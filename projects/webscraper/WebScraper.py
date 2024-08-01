@@ -32,4 +32,4 @@ print(results)
 df = pd.DataFrame({'Names': results, 'Prices': prices})
 df.to_csv('names.csv', index=False, encoding='utf-8')
 
-
+driver.close()

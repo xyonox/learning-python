@@ -30,7 +30,7 @@ for e in soup.findAll(attrs={"class": "rank-wrap"}):
 df = pd.DataFrame({'Names': results, 'Prices': prices})
 df.to_csv('opsucht.csv', index=False, encoding='utf-8')
 
-driver.close()
+driver.close() # dont forget to close
 
 driver = webdriver.Firefox()
 driver.get("https://shop.opsucht.net/category/kristalle")
