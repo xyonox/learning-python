@@ -13,4 +13,4 @@ if __name__ == "__main__":
                                            "du?\n"
                                            "nein? weg mit dir D:")
     print(Blog.hasPerm("xyonox2", "Python lernen"))
-    Blog.delete("Python lernen")
+    Blog.delete("xyonox","Python lernen")
