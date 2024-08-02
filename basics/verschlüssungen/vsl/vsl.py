@@ -2,6 +2,17 @@ from pathlib import Path
 
 import SimpeFileCRYP
 
+import hashlib
+import base64
+
+
+def genkey(key):
+    hashedKey = hashlib.sha256(key.encode()).digest()
+    kodKey = base64.urlsafe_b64encode(hashedKey)
+
+    while len(kodKey) < 32:
+        kodKey += b'='
+
 print(ord("x").__str__() + chr(120).__str__())
 
 def to_number(buchstabe):
